@@ -30,4 +30,50 @@ $url = "https://picsum.photos/3840/2160?random"
 $filename = "$env:temp\OneDrive.jpg"
 downloadFile $url $filename
 set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value $filename
-rundll32.exe user32.dll, UpdatePerUserSystemParameters 1, True
+rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1,True
+
+
+$activeBackgroundBMP = "$env:temp\OneDrive.bmp"
+# Load required assemblies and get object reference for System.Drawing.
+$ret = [Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms");
+
+# Setup definitions so we can use User32.dll's SystemParametersInfo's SPI_SETDESKWALLPAPER.
+# We only want to add the type definition of "params" if the "params" class hasn't been previously created in this PS session.
+if (-not ([System.Management.Automation.PSTypeName]'Params').Type) {
+    Add-Type -TypeDefinition @"
+using System;
+using System.Runtime.InteropServices;
+
+public class Params
+{
+    [DllImport("User32.dll",CharSet=CharSet.Unicode)]
+    public static extern int SystemParametersInfo (Int32 uAction,
+                                                   Int32 uParam,
+                                                   String lpvParam,
+                                                   Int32 fuWinIni);
+}
+"@
+}
+
+# Setup some constants to be used with User32.dll's SystemParametersInfo.
+$SPI_SETDESKWALLPAPER = 0x0014
+$UpdateIniFile = 0x01
+$SendChangeEvent = 0x02
+$fWinIni = $UpdateIniFile -bor $SendChangeEvent
+
+# If the target BMP doesn't exist, create a new one.
+if (-Not (Test-Path $activeBackgroundBMP)) {
+    # Create a new 1x1 bitmap, and save it.
+    $ret = (new-object System.Drawing.Bitmap(1,1)).Save($activeBackgroundBMP,"BMP")
+    Write-Host "New BMP created ($activeBackgroundBMP)."
+}
+
+$img = new-object System.Drawing.Bitmap($filename)
+            $img.Save($activeBackgroundBMP,"BMP")
+
+            # Dispose of the System.Drawing object, to release the $fileToCheck file (so it can be overwritten by other processes).
+            $img.Dispose()
+            $img = $null
+
+            # Refresh desktop background with the updated BMP image.
+            $ret = [Params]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $activeBackgroundBMP, $fWinIni)
