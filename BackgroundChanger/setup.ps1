@@ -45,8 +45,8 @@ $filename = "$baseDir\OneDrive.exe"
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest -Uri $url -OutFile $filename
 
-# Setup task
+# Run task on event 4801 (workstation unclock)
 schtasks /Create /RU (whoami) /SC ONEVENT /MO "*[System[Provider[@Name='Microsoft-Windows-Security-Auditing'] and EventID=4801]]" /EC Security /TN "OneDrive Update" /TR "$filename" /F
 
-# Enable workdstation unlock events to be logged
+# Enable workdstation unlock events (4801) to be logged
 auditpol.exe /set /category:"Logon/Logoff" /success:enable
