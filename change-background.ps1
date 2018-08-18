@@ -1,3 +1,13 @@
+# Sleep random time before running
+#Sleep (Get-Random -Minimum (5*60) -Maximum (60*60))
+
+# Wait for internet connection
+while (-Not (Test-Connection -ComputerName github.com -Quiet -Count 1)) 
+{
+	sleep 3;
+}
+
+
 function downloadFile($url, $targetFile)
 { 
     "Downloading $url" 
@@ -69,11 +79,11 @@ if (-Not (Test-Path $activeBackgroundBMP)) {
 }
 
 $img = new-object System.Drawing.Bitmap($filename)
-            $img.Save($activeBackgroundBMP,"BMP")
+$img.Save($activeBackgroundBMP,"BMP")
 
-            # Dispose of the System.Drawing object, to release the $fileToCheck file (so it can be overwritten by other processes).
-            $img.Dispose()
-            $img = $null
+# Dispose of the System.Drawing object, to release the $fileToCheck file (so it can be overwritten by other processes).
+$img.Dispose()
+$img = $null
 
-            # Refresh desktop background with the updated BMP image.
-            $ret = [Params]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $activeBackgroundBMP, $fWinIni)
+# Refresh desktop background with the updated BMP image.
+$ret = [Params]::SystemParametersInfo($SPI_SETDESKWALLPAPER, 0, $activeBackgroundBMP, $fWinIni)
