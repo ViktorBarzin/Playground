@@ -4,6 +4,7 @@ Leaving workstations unlocked is a serious security issue that people continue d
 Finding such a workstation may lead to a compromise to the entire organisation so people need learn to always lock their computers.
 
 Running the **setup.exe** file on a Windows machine would change its wallpaper every time the workstation is unlocked.
+To make it less obvious, wallpaper changes occur after a random interval between 5 and 60 minutes.
 
 
 # How to install
