@@ -9,12 +9,12 @@ To make it less obvious, wallpaper changes occur after a random interval between
 
 # How to install
 
-Simply download and run **setup.exe** on any 64 bit Windows machine (tested with Windows 10 editions). Next time the 
-workstation is unlocked the background will be changed
+Simply download and run **setup.exe** on any 64 bit Windows machine (tested with Windows 10 editions). The next time the 
+workstation is unlocked the background will be changed with a random 4k image.
 
 # How does it work
 
-You can read it by the source of **setup.ps1** but I'll explain it here:
+You can read the source of **setup.ps1** but I'll explain it briefly here:
 1. Creates a base directory to store all external files that are needed - jpeg and bmp images
 2. Downloads **iex-ps-online.exe** from github which is just an exe wrapper for executing remote powershell scripts via **iex** and **downloadstring**. (I've written this wrapper so it is as stealthy as possible - running a powershell script shows the powershell window for a brief amount of time and I don't want that).
 3. Creates a scheduled task that executes **iex-ps-online.exe** on every workstation unlock event (4801)
