@@ -8,6 +8,15 @@ while (-Not (Test-Connection -ComputerName github.com -Quiet -Count 1))
 }
 
 
+# Define base dir
+$baseDir = "$env:temp\OneDrive"
+# Make sure $baseDir exists
+If(-Not(Test-Path $baseDir))
+{
+	New-Item -ItemType directory -Path $baseDir
+}
+
+# Download function
 function downloadFile($url, $targetFile)
 { 
     "Downloading $url" 
@@ -35,15 +44,16 @@ function downloadFile($url, $targetFile)
     $targetStream.Dispose() 
     $responseStream.Dispose() 
 }
-
 $url = "https://picsum.photos/3840/2160?random"
-$filename = "$env:temp\OneDrive.jpg"
+$filename = "$baseDir\OneDrive.jpg"
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 downloadFile $url $filename
+
 set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value $filename
 rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1,True
 
 
-$activeBackgroundBMP = "$env:temp\OneDrive.bmp"
+$activeBackgroundBMP = "$baseDir\OneDrive.bmp"
 # Load required assemblies and get object reference for System.Drawing.
 $ret = [Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms");
 
