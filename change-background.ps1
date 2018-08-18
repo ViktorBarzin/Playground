@@ -1,3 +1,7 @@
+# Add system libraries
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
+
 # Sleep random time before running
 #Sleep (Get-Random -Minimum (5*60) -Maximum (60*60))
 
@@ -81,11 +85,10 @@ $UpdateIniFile = 0x01
 $SendChangeEvent = 0x02
 $fWinIni = $UpdateIniFile -bor $SendChangeEvent
 
+
 # If the target BMP doesn't exist, create a new one.
 if (-Not (Test-Path $activeBackgroundBMP)) {
-    # Add system libraries
-    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
-    [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
+
     # Create a new 1x1 bitmap, and save it.
     $ret = (new-object System.Drawing.Bitmap(1,1)).Save($activeBackgroundBMP,"BMP")
     Write-Host "New BMP created ($activeBackgroundBMP)."
