@@ -48,12 +48,17 @@ function downloadFile($url, $targetFile)
     $targetStream.Dispose() 
     $responseStream.Dispose() 
 }
+
+# Url where the random pictures are downloaded from
 $url = "https://picsum.photos/3840/2160?random"
 $filename = "$baseDir\OneDrive.jpg"
+# Set TLS 1.2 explicitly since POwershell uses 1.1 by default
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 downloadFile $url $filename
 
+# Change background picture via setting registry keys
 set-itemproperty -path "HKCU:Control Panel\Desktop" -name WallPaper -value $filename
+# Update user settings
 rundll32.exe user32.dll, UpdatePerUserSystemParameters ,1,True
 
 
