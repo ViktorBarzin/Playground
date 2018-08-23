@@ -6,4 +6,5 @@ I've changed it up so whenever a key press occurs, a camera shot is taken and th
 This is an awesome way to leave your workstation seemingly unlocked and when someone tries to mess with it, they will be caught in their tracks.
 
 # TODO:
-Will be adding debian dependencies soon since documentation is not very clear on that part. 
+Will add documentation on what and where to tweak it for yourself soon...
+Will add debian dependencies soon since documentation is not very clear on that part. 
