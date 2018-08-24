@@ -24,3 +24,9 @@ You can read the source of **setup.ps1** but I'll explain it briefly here:
 
 1. **iex-ps-online.exe** is run.
 2. Then it executes the content of **change-background.ps1** script which can be found in this repo(all done without touching the disk) - currently it is simply doing some magic stuff to download a picture and set it as a background image but could always be something more malicious.
+
+
+PS: The exe files are simple wrappers for the powershell scripts so that the powershell window does not show.
+
+# TODO:
+Add a video demonstrating its workings...
