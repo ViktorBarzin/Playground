@@ -38,3 +38,5 @@ streamer is used to take the camera shot.
 Download the i3lock source code and replace **i3lock.c** with the one provided
 in this repo.
 Then proceed with the build process as normal.
+When done, use the lock script provided in this repo when locking your
+workstation - it takes care of all the sceenshoting and stuff...
