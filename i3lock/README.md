@@ -34,6 +34,9 @@ manipulation in c, you will need **ImageMagick** and **streamer**(sudo apt
 install streamer). ImageMagick is used to convert and resize images and
 streamer is used to take the camera shot.
 
+Finally the program that takes screenshots is **scrot** - make sure you have
+that as well.
+
 # Build procedure
 Download the i3lock source code and replace **i3lock.c** with the one provided
 in this repo.
