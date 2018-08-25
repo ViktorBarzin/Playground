@@ -1,0 +1,4 @@
+#!/bin/bash
+scrot --silent /tmp/screenshot.png
+convert /tmp/screenshot.png -blur 0x0 /tmp/screenshotblur.png
+i3lock -i /tmp/screenshotblur.png -u -n
