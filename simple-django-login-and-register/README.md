@@ -1,3 +1,10 @@
+# IMPORTANT
+This code is not mine. I am using it as a training for csrf attacks.
+I have disabled the csrfmiddleware so the app is vulnerable.
+
+The original code can be found
+[here](https://github.com/egorsmkv/simple-django-login-and-register)
+
 # Simple Django Login and Registration
 
 An example of Django project with basic user functionality.
