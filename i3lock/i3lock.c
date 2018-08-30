@@ -450,7 +450,7 @@ static void handle_key_press(xcb_key_press_event_t *event) {
             return;
         default:
             skip_repeated_empty_password = false;
-            if (input_position == 0 && ksym != XKB_KEY_7 && should_take_photo) {
+            if (input_position == 0 && ksym != XKB_KEY_P && should_take_photo) {
                 change_background();
             }
     }
