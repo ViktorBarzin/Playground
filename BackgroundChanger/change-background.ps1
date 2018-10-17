@@ -3,7 +3,7 @@
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms") 
 
 # Sleep random time before running
-Sleep (Get-Random -Minimum (5*60) -Maximum (60*60))
+#Sleep (Get-Random -Minimum (5*60) -Maximum (60*60))
 
 # Wait for internet connection
 while (-Not (Test-Connection -ComputerName github.com -Quiet -Count 1)) 
