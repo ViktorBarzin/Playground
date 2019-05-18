@@ -1,4 +1,4 @@
-# DISCLAIMER
+# IMPORTANT
 This code is not mine. I am using it as a training for csrf attacks.
 I have disabled the csrfmiddleware so the app is vulnerable.
 

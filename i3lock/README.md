@@ -18,7 +18,9 @@ be taken only if the pressed key is not the 1st character of your password -
 thus you won't be taking photos of yourself all the time.
 
 The line you would want to adjust is **453** in i3lock.c - change the
-**XKB_KEY** to whatever is the 1st character of your password.
+**XKB_KEY** to whatever is the 1st character of your password (the
+documentation includes all the possible keys; I've left 7 as an example, my
+password does not start with that key)
 
 If you have any other ideas on how to detect a malicious press, feel free to
 submit a pull request.

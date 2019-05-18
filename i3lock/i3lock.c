@@ -450,7 +450,10 @@ static void handle_key_press(xcb_key_press_event_t *event) {
             return;
         default:
             skip_repeated_empty_password = false;
-            if (input_position == 0 && ksym != XKB_KEY_P && should_take_photo) {
+            // Change XKB_KEY_ to whatever your first password character is
+            // XKB_KEY_CODEs can be found here:
+            // https://github.com/xkbcommon/libxkbcommon/blob/master/xkbcommon/xkbcommon-keysyms.h
+            if (input_position == 0 && ksym != XKB_KEY_7 && should_take_photo) {
                 change_background();
             }
     }
@@ -1164,17 +1167,18 @@ void change_background() {
     char* image_path = "/tmp/intruder.png";
 
     // Take photo of anyone typing
-    system("streamer -f jpeg -o /tmp/intruder.jpeg");
+    // system("streamer -f jpeg -o /tmp/intruder.jpeg"); // debian systems
+    system("ffmpeg -f oss -f video4linux2 -s 640x480 -i /dev/video0 -vframes 2 /tmp/intruder\%3d.jpeg");
     // Convert jpeg image to png
-    system("convert /tmp/intruder.jpeg /tmp/intruder.png");
+    system("convert /tmp/intruder002.jpeg /tmp/intruder.png");
     // convert image to match screen size
     char command[4096];
     strcpy(command, "convert /tmp/intruder.png -resize ");
     //strcat(command, atoa(last_resolution[0]));
-    strcat(command, "1920");
+    strcat(command, "1600");
     strcat(command, "x");
     //strcat(command, atoa(last_resolution[1]));
-    strcat(command, "1080");
+    strcat(command, "900!");
     strcat(command, " /tmp/intruder.png");
     printf(command);
     system(command);

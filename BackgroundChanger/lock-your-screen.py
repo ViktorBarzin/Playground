@@ -6,6 +6,9 @@ export PS1='C:${PWD//\//\\\}>'
 "echo "sleep 0.1" >> ~/.bashrc" in bashrc - gradually start loading slower
 alias ls='ls | rev'
 pacat -p somefile.wav --file-format=wav
+
+persistence:
+    add bad stuff in logout scripts and remove them upon starting a shell
 '''
 
 

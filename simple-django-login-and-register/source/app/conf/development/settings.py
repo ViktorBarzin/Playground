@@ -135,4 +135,4 @@ LOCALE_PATHS = [
     os.path.join(CONTENT_DIR, 'locale')
 ]
 
-X_FRAME_OPTIONS = 'ALLOWALL'
+CSRF_COOKIE_SAMESITE = 'strict'
